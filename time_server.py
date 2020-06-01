@@ -17,7 +17,7 @@ class TimeServer():
         data, addr = self.server.recvfrom(1024)
         if data:
             difference = time.time() - float(data)
-            self.server.sendto(bytes(time.ctime(time.time() + self.time + difference*2), encoding = "utf-8"), addr)
+            self.server.sendto(bytes(time.ctime(time.time() + self.time + difference), encoding = "utf-8"), addr)
 
     def test_send(self):
         self.test_socket.sendto(bytes(str(time.time()), encoding = "utf-8"), ('localhost', 123))
